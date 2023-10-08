@@ -11,6 +11,7 @@
 
 extern char **environ;
 char *get_input(void);
+char *_strtok(char *str, const char *delim);
 char **tokenizer(char *input);
 int _strlen(char *str);
 char *_strcpy(char *str);

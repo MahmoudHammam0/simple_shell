@@ -35,3 +35,50 @@ char *_strcpy(char *str)
 	strdup[i] = '\0';
 	return (strdup);
 }
+
+/**
+ * _strtok - tokenizes a string
+ * @str: input string
+ * @delim: delimiter
+ *
+ * Return: one token at a time
+ */
+char *_strtok(char *str, const char *delim)
+{
+	int len = 0, i = 0;
+	static char *token;
+	char *current_token;
+
+	if (str != NULL)
+		token = str;
+
+	if (!token || *token == '\0')
+		return (NULL);
+
+	while (*token == delim[0])
+		token++;
+
+	while (token[len] != '\0' && token[len] != delim[0])
+		len++;
+
+	current_token = malloc(len + 1);
+
+	if (current_token == NULL)
+		return (NULL);
+
+	for (i = 0; i < len; i++)
+		current_token[i] = token[i];
+
+	current_token[i] = '\0';
+
+	token += len;
+
+	token++;
+	if (*token != '\0' && *token == delim[0])
+	{
+		while (*token == delim[0])
+			token++;
+	}
+
+	return (current_token);
+}
