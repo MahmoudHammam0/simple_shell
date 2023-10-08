@@ -82,3 +82,41 @@ char *_strtok(char *str, const char *delim)
 
 	return (current_token);
 }
+/**
+ * _strcmp - compares strings.
+ * @s1: 1st string
+ * @s2: 2nd string
+ * Return: difference between strings
+ */
+int _strcmp(char *str1, char *str2)
+{
+	int i = 0;
+
+	while (str1[i] && str2[i])
+	{
+		if (str1[i] - str2[i] != 0)
+		{
+			return (str1[i] - str2[i]);
+		}
+		i++;
+	}
+	return (0);
+}
+/**
+ * _strcat - concatenates strings.
+ * @dest : string to append to 
+ * @src : string to be appended
+ * Return: string contains both strings
+ */
+char *_strcat(char *dest, char *src)
+{
+	int i;
+	int x = _strlen(dest);
+	int y = _strlen(src);
+
+	for (i = 0; i <= y; i++)
+	{
+		dest[x + i] = src[i];
+	}
+	return (dest);
+}

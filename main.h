@@ -22,5 +22,7 @@ int executioner(char **cmd, char **argv, char *input);
 char *get_path(char *str);
 int path_check(char *s);
 char **tokenizer(char *input);
+int _strcmp(char *str1, char *str2);
+char *_strcat(char *dest, char *src);
 
 #endif

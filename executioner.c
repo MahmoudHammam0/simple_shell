@@ -101,7 +101,7 @@ char *get_path(char *str)
 	{
 		cp = _strcpy(environ[i]);
 		tok = strtok(cp, del);
-		if (strcmp(tok, path) == 0)
+		if (_strcmp(tok, path) == 0)
 			break;
 		free(cp);
 		tok = NULL;
@@ -113,9 +113,9 @@ char *get_path(char *str)
 	while (tok)
 	{
 		cp = malloc(30);
-		strcpy(cp, tok);
-		strcat(cp, "/");
-		strcat(cp, str);
+		cp = _strcpy(tok);
+		_strcat(cp, "/");
+		_strcat(cp, str);
 		if (stat(cp, &p) == 0)
 			return (cp);
 		tok = strtok(NULL, d);
