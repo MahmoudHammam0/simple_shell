@@ -40,6 +40,7 @@ int executioner(char **cmd, char **argv, char *input)
 	pid = fork();
 	if (pid == 0)
 	{
+		cmd[0] = add_path(cmd[0]);
 		v = execve(cmd[0], cmd, environ);
 		if (v < 0)
 		{
