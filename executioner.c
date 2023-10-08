@@ -1,4 +1,30 @@
 #include "main.h"
+
+/**
+ * add_path - adds the path /bin/ at the beginning
+ * @str: input string
+ *
+ * Return: the updated string
+ */
+char *add_path(char *str)
+{
+	char *full_path;
+
+	full_path = _strcpy("/bin/");
+	strcat(full_path, str);
+
+	free(str);
+	str = strdup(full_path);
+	if (str == NULL)
+	{
+		perror("strdup");
+		exit(EXIT_FAILURE);
+	}
+
+	return (str);
+}
+
+
 /**
  * executioner - execute commands
  * @cmd: array of strings(command arguments)
