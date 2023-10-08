@@ -12,7 +12,7 @@ char *get_input(void)
 	if (isatty(0) != 0)
 		write(1, "cisfun$ ", 8);
 	a = getline(&buff, &n, stdin);
-	if (a == -1)
+	if (a == -1 || a == SIGINT)
 	{
 		free(buff);
 		return (NULL);
