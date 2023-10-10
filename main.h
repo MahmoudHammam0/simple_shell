@@ -24,5 +24,6 @@ int path_check(char *s);
 char **tokenizer(char *input);
 int _strcmp(char *str1, char *str2);
 char *_strcat(char *dest, char *src);
+char *_getenv(char *s);
 
 #endif

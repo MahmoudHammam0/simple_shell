@@ -92,23 +92,10 @@ int path_check(char *s)
  */
 char *get_path(char *str)
 {
-	int i;
-	char *path = "PATH", *del = "=", *tok, *cp;
-	char *d = ":", *value;
+	char *tok, *cp, *d = ":", *value;
 	struct stat p;
 
-	for (i = 0; environ[i] != NULL; i++)
-	{
-		cp = _strcpy(environ[i]);
-		tok = strtok(cp, del);
-		if (_strcmp(tok, path) == 0)
-			break;
-		free(cp);
-		tok = NULL;
-	}
-	tok = strtok(NULL, del);
-	value = _strcpy(tok);
-	free(cp);
+	value = _getenv("PATH");
 	tok = strtok(value, d);
 	while (tok)
 	{
@@ -117,9 +104,13 @@ char *get_path(char *str)
 		_strcat(cp, "/");
 		_strcat(cp, str);
 		if (stat(cp, &p) == 0)
+		{
+			free(value);
 			return (cp);
+		}
 		tok = strtok(NULL, d);
 		free(cp);
 	}
+	free(value);
 	return (NULL);
 }
