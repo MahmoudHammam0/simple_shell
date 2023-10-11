@@ -75,7 +75,7 @@ char *get_path(char *str)
 	while (tok)
 	{
 		cp = malloc(30);
-		cp = _strcpy(tok);
+		_stcpy(cp, tok);
 		_strcat(cp, "/");
 		_strcat(cp, str);
 		if (stat(cp, &p) == 0)

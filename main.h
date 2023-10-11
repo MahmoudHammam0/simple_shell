@@ -27,5 +27,6 @@ char *_strcat(char *dest, char *src);
 char *_getenv(char *s);
 int execute_builtin(char *s);
 void printenv(char *s);
+char *_stcpy(char *dest, char *src);
 
 #endif
