@@ -16,6 +16,7 @@ void printenv(void)
 			write(1, "\n", 1);
 		i++;
 	}
+	write(1, "\n", 1);
 }
 
 /**
@@ -29,13 +30,11 @@ int execute_builtin(char *s)
 {
 	if (_strcmp(s, "exit") == 0)
 	{
-		free(s);
 		exit(EXIT_SUCCESS);
 	}
 	if (_strcmp(s, "env") == 0)
 	{
 		printenv();
-		free(s);
 		return (0);
 	}
 	return (1);
