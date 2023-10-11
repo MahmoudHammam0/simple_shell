@@ -5,18 +5,17 @@
  *
  * @cmd: string
  */
-void printenv(char *cmd)
+void printenv(void)
 {
 	int i = 0;
 
-	while (cmd)
+	while (environ[i])
 	{
-		cmd =  environ[i++];
-		write(1, cmd, _strlen(cmd));
-		if (environ[i] != NULL)
+		write(1, environ[i], _strlen(environ[i]));
+		if (environ[i + 1] != NULL)
 			write(1, "\n", 1);
+		i++;
 	}
-	free(cmd);
 }
 
 /**
@@ -35,7 +34,7 @@ int execute_builtin(char *s)
 	}
 	if (_strcmp(s, "env") == 0)
 	{
-		printenv("env");
+		printenv();
 		free(s);
 		return (0);
 	}
