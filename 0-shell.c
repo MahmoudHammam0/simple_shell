@@ -25,7 +25,7 @@ int main(int __attribute__((unused))argc, char **argv)
 		if (cmd == NULL)
 			continue;
 		if (execute_builtin(cmd[0]) == 1)
-			stat = executioner(cmd, argv, input);
+			stat = executioner(cmd, argv);
 	}
 	return (0);
 }

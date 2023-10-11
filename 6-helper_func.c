@@ -7,7 +7,7 @@
 char *_getenv(char *s)
 {
 	int i;
-	char *cp, *tok, *value, *del = "=";
+	char *cp = NULL, *tok = NULL, *value = NULL, *del = "=";
 
 	if (s == NULL)
 		return (NULL);
@@ -20,6 +20,8 @@ char *_getenv(char *s)
 		free(cp), cp = NULL;
 		tok = NULL;
 	}
+	if (environ[i] == NULL)
+		return (NULL);
 	tok = strtok(NULL, del);
 	value = _strcpy(tok);
 	free(cp), cp = NULL;

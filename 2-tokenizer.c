@@ -6,39 +6,54 @@
  */
 char **tokenizer(char *input)
 {
-	int n = 0, i = 0;
-	char *str2, *tok, *del = " \n\t";
+	int n, i = 0;
+	char *str = NULL, *str2 = NULL, *tok = NULL, *del = " \n\t";
 	char **cmd;
 
 	if (input == NULL)
 		return (NULL);
+	str = _strcpy(input);
 	str2 = _strcpy(input);
-	tok = strtok(str2, del);
-	if (tok == NULL)
-	{
-		free(str2);
-		free(input);
-		return (NULL);
-	}
-	while (tok != NULL)
-	{
-		n++;
-		tok = strtok(NULL, del);
-	}
-	free(str2);
+	n = tok_num(str2);
+	free(input), input = NULL;
 	cmd = malloc(sizeof(char *) * (n + 1));
 	if (cmd == NULL)
 	{
-		free(input);
+		free(str), str = NULL;
 		return (NULL);
 	}
-	tok = strtok(input, del);
+	tok = strtok(str, del);
 	while (tok)
 	{
-		cmd[i] = tok;
+		cmd[i] = _strcpy(tok);
 		tok = strtok(NULL, del);
 		i++;
 	}
 	cmd[i] = NULL;
+	free(str), str = NULL;
 	return (cmd);
+}
+/**
+ * tok_num - calculate number of tokens in string
+ * @str2: string to be tokenized
+ * Return: number of token
+ */
+int tok_num(char *str2)
+{
+	int count = 0;
+	char *del = " \n\t", *tok = NULL;
+
+	tok = strtok(str2, del);
+	if (tok == NULL)
+	{
+		free(str2), str2 = NULL;
+		return (0);
+	}
+	while (tok)
+	{
+		count++;
+		tok = strtok(NULL, del);
+	}
+	free(str2), str2 = NULL;
+	return (count);
 }

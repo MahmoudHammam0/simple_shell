@@ -84,8 +84,8 @@ char *_strtok(char *str, const char *delim)
 }
 /**
  * _strcmp - compares strings.
- * @s1: 1st string
- * @s2: 2nd string
+ * @str1: 1st string
+ * @str2: 2nd string
  * Return: difference between strings
  */
 int _strcmp(char *str1, char *str2)
@@ -104,7 +104,7 @@ int _strcmp(char *str1, char *str2)
 }
 /**
  * _strcat - concatenates strings.
- * @dest : string to append to 
+ * @dest : string to append to
  * @src : string to be appended
  * Return: string contains both strings
  */

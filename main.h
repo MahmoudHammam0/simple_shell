@@ -18,7 +18,7 @@ char **split_string(char *input, int *num_words);
 int _strlen(char *str);
 char *_strcpy(char *str);
 char *add_path(char *str);
-int executioner(char **cmd, char **argv, char *input);
+int executioner(char **cmd, char **argv);
 char *get_path(char *str);
 int path_check(char *s);
 char **tokenizer(char *input);
@@ -28,5 +28,8 @@ char *_getenv(char *s);
 int execute_builtin(char *s);
 void printenv(char *s);
 char *_stcpy(char *dest, char *src);
+int tok_num(char *str2);
+void _free(char **cmd);
+int cmd_check(char *s);
 
 #endif
