@@ -25,7 +25,7 @@ char **tokenizer(char *input);
 int _strcmp(char *str1, char *str2);
 char *_strcat(char *dest, char *src);
 char *_getenv(char *s);
-int execute_builtin(char *s);
+int execute_builtin(char **s);
 void printenv(void);
 char *_stcpy(char *dest, char *src);
 int tok_num(char *str2);

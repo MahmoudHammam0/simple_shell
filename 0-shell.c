@@ -10,7 +10,7 @@ int main(int __attribute__((unused))argc, char **argv)
 {
 	char *input = NULL;
 	char **cmd;
-	int stat = 0, g, i;
+	int stat = 0, g;
 
 	for (g = 1; g > 0; g++)
 	{
@@ -24,11 +24,8 @@ int main(int __attribute__((unused))argc, char **argv)
 		cmd = tokenizer(input);
 		if (cmd == NULL)
 			continue;
-		if (execute_builtin(cmd[0]) == 1)
+		if (execute_builtin(cmd) == 1)
 			stat = executioner(cmd, argv);
-		for (i = 0; cmd[i] != NULL; i++)
-			free(cmd[i]);
-		free(cmd);
 	}
 	return (0);
 }

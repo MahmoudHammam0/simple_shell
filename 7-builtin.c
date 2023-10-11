@@ -26,15 +26,17 @@ void printenv(void)
  *
  * Return: 0 if builtin, 1 if not
  */
-int execute_builtin(char *s)
+int execute_builtin(char **s)
 {
-	if (_strcmp(s, "exit") == 0)
+	if (_strcmp(s[0], "exit") == 0)
 	{
+		_free(s);
 		exit(EXIT_SUCCESS);
 	}
-	if (_strcmp(s, "env") == 0)
+	if (_strcmp(s[0], "env") == 0)
 	{
 		printenv();
+		_free(s);
 		return (0);
 	}
 	return (1);
