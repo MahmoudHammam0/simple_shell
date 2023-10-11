@@ -24,7 +24,8 @@ int main(int __attribute__((unused))argc, char **argv)
 		cmd = tokenizer(input);
 		if (cmd == NULL)
 			continue;
-		stat = executioner(cmd, argv, input);
+		if (execute_builtin(cmd[0]) == 1)
+			stat = executioner(cmd, argv, input);
 	}
 	return (0);
 }
