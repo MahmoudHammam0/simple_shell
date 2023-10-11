@@ -28,6 +28,8 @@ void printenv(void)
  */
 int execute_builtin(char **s)
 {
+	if (s[0] == NULL)
+		return (0);
 	if (_strcmp(s[0], "exit") == 0)
 	{
 		_free(s);
