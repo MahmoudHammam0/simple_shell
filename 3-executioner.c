@@ -8,7 +8,7 @@
 int executioner(char **cmd, char **argv)
 {
 	pid_t pid;
-	int stat, v, p, c;
+	int stat = 0, v, p, c;
 	char *str = NULL;
 
 	if (cmd == NULL)
