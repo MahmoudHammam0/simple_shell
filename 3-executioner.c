@@ -3,9 +3,10 @@
  * executioner - execute commands
  * @cmd: array of strings(command arguments)
  * @argv: array of strings (commandline arguments)
+ * @g: command number
  * Return: exit status
  */
-int executioner(char **cmd, char **argv)
+int executioner(char **cmd, char **argv, int g)
 {
 	pid_t pid;
 	int stat = 0, v, p, c;
@@ -19,7 +20,7 @@ int executioner(char **cmd, char **argv)
 		str = get_path(cmd[0]);
 		if (str == NULL)
 		{
-			perror(argv[0]);
+			_error(cmd[0], argv, g);
 			_free(cmd);
 			return (WEXITSTATUS(stat));
 		}
@@ -28,17 +29,16 @@ int executioner(char **cmd, char **argv)
 	}
 	c = cmd_check(cmd[0]);
 	if (p == 1 && c == -1)
-		perror(argv[0]);
+		_error(cmd[0], argv, g);
 	if (c == 1)
 	{
 		pid = fork();
 		if (pid == 0)
 		{
-			printf("fork has been called\n");
 			v = execve(cmd[0], cmd, environ);
 			if (v < 0)
 			{
-				perror(argv[0]);
+				_error(cmd[0], argv, g);
 				exit(0);
 			}
 		}

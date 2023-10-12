@@ -3,7 +3,6 @@
 /**
  * printenv - prints the environment
  *
- * @cmd: string
  */
 void printenv(void)
 {
