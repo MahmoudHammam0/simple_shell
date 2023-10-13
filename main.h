@@ -34,5 +34,6 @@ int cmd_check(char *s);
 void print(char *s);
 char *num_to_char(int n);
 void _error(char *s, char **argv, int g);
+int _getline(char **lineptr, size_t *n, FILE *stream);
 
 #endif

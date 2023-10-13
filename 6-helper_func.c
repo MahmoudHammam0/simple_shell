@@ -91,3 +91,34 @@ void _error(char *s, char **argv, int g)
 	print(s);
 	print(": not found\n");
 }
+/**
+ * _getline - reads a line from stdin
+ * @lineptr: pointer to string buffer
+ * @n: memory allocated to buffer
+ * @stream: stdin
+ * Return: number of bytes read
+ */
+int _getline(char **lineptr, size_t *n, FILE *stream)
+{
+	char *buff;
+	int r, i, fd = 0;
+
+	(void)*stream;
+	if (*lineptr == NULL)
+	{
+		buff = malloc(sizeof(char) * 1024);
+		*n = 1024;
+		if (buff == NULL)
+			return (-1);
+	}
+	*buff = '\0';
+	r = read(fd, buff, *n);
+	*lineptr = buff;
+	if (r == 0)
+		return (-1);
+	for (i = 0; buff[i] != '\n'; i++)
+		;
+	buff[i + 1] = '\0';
+	return (r);
+}
+
