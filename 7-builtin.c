@@ -25,7 +25,7 @@ void printenv(void)
  *
  * Return: 0 if builtin, 1 if not
  */
-int execute_builtin(char **s)
+int execute_builtin(char **s, char **argv, int *stat, int g)
 {
 	if (s[0] == NULL)
 	{
@@ -34,14 +34,41 @@ int execute_builtin(char **s)
 	}
 	if (_strcmp(s[0], "exit") == 0)
 	{
-		_free(s);
-		exit(EXIT_SUCCESS);
+		exit_func(s, argv, stat, g);
+		return (0);
 	}
 	if (_strcmp(s[0], "env") == 0)
 	{
 		printenv();
+		*stat = 0;
 		_free(s);
 		return (0);
 	}
 	return (1);
+}
+void exit_func(char **cmd, char **argv, int *stat, int g)
+{
+	int val = *stat;
+	char *str;
+
+	if (cmd[1] != NULL)
+	{
+		if (_atoi(cmd[1]) > 0)
+			val = _atoi(cmd[1]);
+		else
+		{
+			str = num_to_char(g);
+			print(argv[0]);
+			print(": ");
+			print(str);
+			free(str), str = NULL;
+			print(": exit: Illegal number: ");
+			print(cmd[1]);
+			print("\n");
+			_free(cmd);
+			return;
+		}
+	}
+	_free(cmd);
+	exit(val);
 }

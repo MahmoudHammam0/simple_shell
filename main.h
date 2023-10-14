@@ -25,7 +25,8 @@ char **tokenizer(char *input);
 int _strcmp(char *str1, char *str2);
 char *_strcat(char *dest, char *src);
 char *_getenv(char *s);
-int execute_builtin(char **s);
+int execute_builtin(char **s, char **argv, int *stat, int g);
+void exit_func(char **cmd, char **argv, int *stat, int g);
 void printenv(void);
 char *_stcpy(char *dest, char *src);
 int tok_num(char *str2);
@@ -35,5 +36,6 @@ void print(char *s);
 char *num_to_char(int n);
 void _error(char *s, char **argv, int g);
 int _getline(char **lineptr, size_t *n, FILE *stream);
+int _atoi(char *s);
 
 #endif

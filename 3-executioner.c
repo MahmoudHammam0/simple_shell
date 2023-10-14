@@ -22,7 +22,7 @@ int executioner(char **cmd, char **argv, int g)
 		{
 			_error(cmd[0], argv, g);
 			_free(cmd);
-			return (WEXITSTATUS(stat));
+			return (127);
 		}
 		free(cmd[0]), cmd[0] = NULL;
 		cmd[0] = str;
