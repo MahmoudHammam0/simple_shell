@@ -20,9 +20,10 @@ void printenv(void)
 
 /**
  * execute_builtin - handles builtin commands
- *
  * @s: builtin commands
- *
+ * @argv: array of command line arguments
+ * @stat: pointer to exit status
+ * @g: number of command
  * Return: 0 if builtin, 1 if not
  */
 int execute_builtin(char **s, char **argv, int *stat, int g)
@@ -46,15 +47,23 @@ int execute_builtin(char **s, char **argv, int *stat, int g)
 	}
 	return (1);
 }
+/**
+ * exit_func - handles exit argument
+ * @cmd: array of input strings
+ * @argv: array of command line arguments
+ * @stat: pointer to exit status
+ * @g: number of command
+ * Return: Nothing
+ */
 void exit_func(char **cmd, char **argv, int *stat, int g)
 {
-	int val = *stat;
+	int val;
 	char *str;
 
 	if (cmd[1] != NULL)
 	{
 		if (_atoi(cmd[1]) > 0)
-			val = _atoi(cmd[1]);
+			*stat = _atoi(cmd[1]);
 		else
 		{
 			str = num_to_char(g);
@@ -66,9 +75,11 @@ void exit_func(char **cmd, char **argv, int *stat, int g)
 			print(cmd[1]);
 			print("\n");
 			_free(cmd);
+			*stat = 2;
 			return;
 		}
 	}
+	val = *stat;
 	_free(cmd);
 	exit(val);
 }
