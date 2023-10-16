@@ -25,6 +25,12 @@ char **tokenizer(char *input)
 	tok = strtok(str, del);
 	while (tok)
 	{
+		if (tok[0] == '#' && tok[1] == '\0')
+		{
+			cmd[i] = NULL;
+			free(str), str = NULL;
+			return (cmd);
+		}
 		cmd[i] = _strcpy(tok);
 		tok = strtok(NULL, del);
 		i++;
