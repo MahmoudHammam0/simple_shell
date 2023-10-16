@@ -39,5 +39,8 @@ int _getline(char **lineptr, size_t *n, FILE *stream);
 int _atoi(char *s);
 char *_setenv(char **cmd, int *env);
 void new_env(char *str, int *env);
+int _unsetenv(char **cmd, int *env);
+void built_in0(char **cmd, int *env);
+void built_in1(char **cmd, int *env);
 
 #endif
