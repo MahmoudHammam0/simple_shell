@@ -25,7 +25,7 @@ char **tokenizer(char *input)
 	tok = strtok(str, del);
 	while (tok)
 	{
-		if (strcmp(tok, "#") == 0)
+		if (_strcmp(tok, "#") == 0)
 		{
 			cmd[i] = NULL;
 			free(str), str = NULL;
