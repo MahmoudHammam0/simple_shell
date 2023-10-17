@@ -37,6 +37,11 @@ int execute_builtin(char **s, char **argv, int *stat, int *env, int g)
 		built_in1(s, env);
 		return (0);
 	}
+	if (_strcmp(s[0], "cd") == 0)
+	{
+		built_in2(s, env, argv, g);
+		return (0);
+	}
 	return (1);
 }
 /**
@@ -120,5 +125,22 @@ void built_in1(char **cmd, int *env)
 	}
 	new_env(str, env);
 	*env = 1;
+	_free(cmd);
+}
+/**
+ * built_in2 - handle cd built in command
+ * @cmd: array of argument strings
+ * @env: environ change
+ * @argv: array of command line arguments
+ * @g: number of command executed
+ * Return: Nothing
+ */
+void built_in2(char **cmd, int *env, char **argv, int g)
+{
+	int x;
+
+	x = _cd(cmd, env);
+	if (x == -1)
+		cd_error(cmd, argv, g);
 	_free(cmd);
 }

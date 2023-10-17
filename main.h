@@ -12,6 +12,7 @@
 #include <sys/wait.h>
 
 extern char **environ;
+
 char *get_input(void);
 char *_strtok(char *str, const char *delim);
 char **split_string(char *input, int *num_words);
@@ -42,5 +43,12 @@ void new_env(char *str, int *env);
 int _unsetenv(char **cmd, int *env);
 void built_in0(char **cmd, int *env);
 void built_in1(char **cmd, int *env);
+void built_in2(char **cmd, int *env, char **argv, int g);
+int _cd(char **cmd, int *env);
+char *env_pwd(char *new, int *env);
+char *env_owd(char *old, int *env);
+void env_update(char *new, char *curr, int *env);
+char *path(char *curr_path, char *dir);
+void cd_error(char **cmd, char **argv, int g);
 
 #endif

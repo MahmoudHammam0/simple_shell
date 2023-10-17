@@ -11,7 +11,7 @@ char *get_input(void)
 
 	if (isatty(0) != 0)
 		write(1, "cisfun$ ", 8);
-	a = _getline(&buff, &n, stdin);
+	a = getline(&buff, &n, stdin);
 	if (a == -1)
 	{
 		free(buff), buff = NULL;

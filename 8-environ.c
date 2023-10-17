@@ -122,3 +122,22 @@ int _unsetenv(char **cmd, int *env)
 	}
 	return (0);
 }
+/**
+ * env_update - update environment after changing pwd
+ * @new: pwd
+ * @curr: oldpwd
+ * @env: environ change
+ * Return: Nothing
+ */
+void env_update(char *new, char *curr, int *env)
+{
+	char *str1, *str2;
+
+	str1 = env_pwd(new, env);
+	new_env(str1, env);
+	*env = 1;
+	str2 = env_owd(curr, env);
+	new_env(str2, env);
+	*env = 1;
+}
+
