@@ -39,7 +39,7 @@ int executioner(char **cmd, char **argv, int g)
 			if (v < 0)
 			{
 				_error(cmd[0], argv, g);
-				exit(0);
+				_free(cmd);
 			}
 		}
 		else
@@ -82,7 +82,7 @@ char *get_path(char *str)
 	tok = strtok(value, d);
 	while (tok)
 	{
-		cp = malloc(128);
+		cp = malloc(_strlen(tok) + _strlen(str) + 2);
 		if (cp == NULL)
 			return (NULL);
 		_stcpy(cp, tok);
