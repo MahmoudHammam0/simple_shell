@@ -12,8 +12,6 @@ int executioner(char **cmd, char **argv, int g)
 	int stat = 0, v, p, c;
 	char *str = NULL;
 
-	if (cmd == NULL)
-		return (WEXITSTATUS(stat));
 	p = path_check(cmd[0]);
 	if (p == 0)
 	{
