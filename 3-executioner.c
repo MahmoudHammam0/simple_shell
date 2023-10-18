@@ -77,12 +77,17 @@ char *get_path(char *str)
 	if (str == NULL)
 		return (NULL);
 	value = _getenv("PATH");
+	if (value == NULL)
+		return (NULL);
 	tok = strtok(value, d);
 	while (tok)
 	{
 		cp = malloc(_strlen(tok) + _strlen(str) + 2);
 		if (cp == NULL)
+		{
+			free(value), value = NULL;
 			return (NULL);
+		}
 		_stcpy(cp, tok);
 		_strcat(cp, "/");
 		_strcat(cp, str);
