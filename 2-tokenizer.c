@@ -7,7 +7,7 @@
 char **tokenizer(char *input)
 {
 	int n, i = 0;
-	char *str = NULL, *str2 = NULL, *tok = NULL, *del = " \n\t";
+	char *str = NULL, *str2 = NULL, *tok = NULL, *del = " ";
 	char **cmd;
 
 	if (input == NULL)
@@ -32,13 +32,6 @@ char **tokenizer(char *input)
 			return (cmd);
 		}
 		cmd[i] = _strcpy(tok);
-		if (cmd[i] == NULL)
-		{
-			for (i = i - 1; i >= 0; i--)
-				free(cmd[i]), cmd[i] = NULL;
-			free(cmd);
-			return (NULL);
-		}
 		tok = strtok(NULL, del);
 		i++;
 	}
@@ -54,7 +47,7 @@ char **tokenizer(char *input)
 int tok_num(char *str2)
 {
 	int count = 0;
-	char *del = " \n\t", *tok = NULL;
+	char *del = " ", *tok = NULL;
 
 	if (str2 == NULL)
 	{
