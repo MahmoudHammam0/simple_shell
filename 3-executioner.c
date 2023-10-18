@@ -38,6 +38,7 @@ int executioner(char **cmd, char **argv, int g)
 			{
 				_error(cmd[0], argv, g);
 				_free(cmd);
+				return (127);
 			}
 		}
 		else
