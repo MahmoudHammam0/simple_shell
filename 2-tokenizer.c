@@ -35,6 +35,7 @@ char **tokenizer(char *input)
 		if (cmd[i] == NULL)
 		{
 			_free(cmd);
+			free(str), str = NULL;
 			return (NULL);
 		}
 		tok = strtok(NULL, del);
