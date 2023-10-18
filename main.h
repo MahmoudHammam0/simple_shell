@@ -54,28 +54,4 @@ int cd_home(char *new_path, char *curr_path, int *env);
 int cd_pre(char *new_path, char *curr_path, int *env);
 int _stcmp(char *str1, char *str2);
 
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-/* */
-
 #endif
