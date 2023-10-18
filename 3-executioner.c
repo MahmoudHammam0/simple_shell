@@ -12,6 +12,8 @@ int executioner(char **cmd, char **argv, int g)
 	int stat = 0, v, p, c;
 	char *str = NULL;
 
+	if (cmd == NULL)
+		return (127);
 	p = path_check(cmd[0]);
 	if (p == 0)
 	{
@@ -38,7 +40,6 @@ int executioner(char **cmd, char **argv, int g)
 			{
 				_error(cmd[0], argv, g);
 				_free(cmd);
-				exit(126);
 			}
 		}
 		else
