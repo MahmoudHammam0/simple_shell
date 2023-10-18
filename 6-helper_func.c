@@ -22,7 +22,7 @@ char *_getenv(char *s)
 	}
 	if (environ[i] == NULL)
 		return (NULL);
-	tok = strtok(NULL, del);
+	tok = strtok(NULL, "\n");
 	value = _strcpy(tok);
 	free(cp), cp = NULL;
 	return (value);
