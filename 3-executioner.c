@@ -128,9 +128,6 @@ int cmd_check(char *s)
 	struct stat p;
 
 	if (stat(s, &p) == 0)
-	{
-		if (access(s, F_OK) == 0)
-			return (1);
-	}
+		return (1);
 	return (-1);
 }
