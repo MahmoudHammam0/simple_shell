@@ -56,7 +56,7 @@ int path_check(char *s)
 	int i;
 
 	if (s == NULL)
-		return (-1);
+		return (0);
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (s[i] == '/')
