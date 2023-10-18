@@ -16,7 +16,10 @@ char *_getenv(char *s)
 		cp = _strcpy(environ[i]);
 		tok = strtok(cp, del);
 		if (_strcmp(tok, s) == 0)
-			break;
+		{
+			if (_stcmp(tok, s) == 0)
+				break;
+		}
 		free(cp), cp = NULL;
 		tok = NULL;
 	}

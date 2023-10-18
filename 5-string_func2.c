@@ -81,3 +81,20 @@ char *num_to_char(int n)
 	s[j + 1] = '\0';
 	return (s);
 }
+/**
+ * _stcmp - compare two strings
+ * @str1: string 1
+ * @str2: string 2
+ * Return: -1 on difference
+ */
+int _stcmp(char *str1, char *str2)
+{
+	int i;
+
+	for (i = 0; str1[i] != '\0'; i++)
+	{
+		if (str1[i] != str2[i])
+			return (-1);
+	}
+	return (0);
+}
