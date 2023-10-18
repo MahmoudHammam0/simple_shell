@@ -8,26 +8,16 @@
 int _cd(char **cmd, int *env)
 {
 	int x;
-	char *curr_path = NULL, *new_path = NULL, *str = NULL;
+	char *curr_path = NULL, *new_path = NULL;
 
 	if (cmd[1] == NULL)
 	{
-		curr_path = getcwd(curr_path, 0);
-		new_path = _getenv("HOME");
-		chdir(new_path);
-		env_update(new_path, curr_path, env);
+		cd_home(new_path, curr_path, env);
 		return (0);
 	}
 	if (_strcmp(cmd[1], "-") == 0)
 	{
-		curr_path = getcwd(curr_path, 0);
-		new_path = _getenv("OLDPWD");
-		chdir(new_path);
-		str = getcwd(str, 0);
-		write(1, str, _strlen(str));
-		write(1, "\n", 1);
-		env_update(new_path, curr_path, env);
-		free(str), str = NULL;
+		cd_pre(new_path, curr_path, env);
 		return (0);
 	}
 	curr_path = getcwd(curr_path, 0);

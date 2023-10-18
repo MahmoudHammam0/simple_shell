@@ -50,5 +50,7 @@ char *env_owd(char *old, int *env);
 void env_update(char *new, char *curr, int *env);
 char *path(char *curr_path, char *dir);
 void cd_error(char **cmd, char **argv, int g);
+int cd_home(char *new_path, char *curr_path, int *env);
+int cd_pre(char *new_path, char *curr_path, int *env);
 
 #endif
