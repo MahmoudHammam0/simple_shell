@@ -38,6 +38,7 @@ int executioner(char **cmd, char **argv, int g)
 			{
 				_error(cmd[0], argv, g);
 				_free(cmd);
+				return (126);
 			}
 		}
 		else
@@ -94,9 +95,7 @@ char *get_path(char *str)
 		if (stat(cp, &p) == 0)
 		{
 			free(value), value = NULL;
-			if (access(cp, F_OK) == 0)
-				return (cp);
-			return (NULL);
+			return (cp);
 		}
 		tok = strtok(NULL, d);
 		free(cp), cp = NULL;
