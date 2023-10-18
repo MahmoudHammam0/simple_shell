@@ -94,7 +94,9 @@ char *get_path(char *str)
 		if (stat(cp, &p) == 0)
 		{
 			free(value), value = NULL;
-			return (cp);
+			if (access(cp, F_OK) == 0)
+				return (cp);
+			return (NULL);
 		}
 		tok = strtok(NULL, d);
 		free(cp), cp = NULL;
