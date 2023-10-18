@@ -31,9 +31,7 @@ int executioner(char **cmd, char **argv, int g)
 	if (c == 1)
 	{
 		pid = fork();
-		if (pid == -1)
-			perror("fork");
-		else if (pid == 0)
+		if (pid == 0)
 		{
 			v = execve(cmd[0], cmd, environ);
 			if (v < 0)
@@ -44,14 +42,7 @@ int executioner(char **cmd, char **argv, int g)
 			}
 		}
 		else
-		{
-			if (waitpid(pid, &stat, 0) == -1)
-			{
-				_error(cmd[0], argv, g);
-				_free(cmd);
-				exit(EXIT_FAILURE);
-			}
-		}
+			waitpid(pid, &stat, 0);
 	}
 	_free(cmd);
 	return (WEXITSTATUS(stat));
