@@ -31,7 +31,9 @@ int executioner(char **cmd, char **argv, int g)
 	if (c == 1)
 	{
 		pid = fork();
-		if (pid == 0)
+		if (pid == -1)
+			perror("fork");
+		else if (pid == 0)
 		{
 			v = execve(cmd[0], cmd, environ);
 			if (v < 0)
