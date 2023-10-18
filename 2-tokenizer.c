@@ -16,11 +16,6 @@ char **tokenizer(char *input)
 	str2 = _strcpy(input);
 	n = tok_num(str2);
 	free(input), input = NULL;
-	if (n == 0)
-	{
-		free(str), str = NULL;
-		return (NULL);
-	}
 	cmd = malloc(sizeof(char *) * (n + 1));
 	if (cmd == NULL)
 	{
@@ -37,6 +32,11 @@ char **tokenizer(char *input)
 			return (cmd);
 		}
 		cmd[i] = _strcpy(tok);
+		if (cmd[i] == NULL)
+		{
+			_free(cmd);
+			return (NULL);
+		}
 		tok = strtok(NULL, del);
 		i++;
 	}
