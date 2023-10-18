@@ -32,6 +32,13 @@ char **tokenizer(char *input)
 			return (cmd);
 		}
 		cmd[i] = _strcpy(tok);
+		if (cmd[i] == NULL)
+		{
+			for (i = i - 1; i >= 0; i--)
+				free(cmd[i]), cmd[i] = NULL;
+			free(cmd);
+			return (NULL);
+		}
 		tok = strtok(NULL, del);
 		i++;
 	}
