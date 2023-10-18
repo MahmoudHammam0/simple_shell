@@ -7,7 +7,7 @@
 char **tokenizer(char *input)
 {
 	int n, i = 0;
-	char *str = NULL, *str2 = NULL, *tok = NULL, *del = " ";
+	char *str = NULL, *str2 = NULL, *tok = NULL, *del = " \t\n";
 	char **cmd;
 
 	if (input == NULL)
@@ -47,7 +47,7 @@ char **tokenizer(char *input)
 int tok_num(char *str2)
 {
 	int count = 0;
-	char *del = " ", *tok = NULL;
+	char *del = " \t\n", *tok = NULL;
 
 	if (str2 == NULL)
 	{
