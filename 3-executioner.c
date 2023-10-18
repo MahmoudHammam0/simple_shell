@@ -38,11 +38,18 @@ int executioner(char **cmd, char **argv, int g)
 			{
 				_error(cmd[0], argv, g);
 				_free(cmd);
-				return (126);
+				exit(126);
 			}
 		}
 		else
-			waitpid(pid, &stat, 0);
+		{
+			if (waitpid(pid, &stat, 0) == -1)
+			{
+				_error(cmd[0], argv, g);
+				_free(cmd);
+				exit(EXIT_FAILURE);
+			}
+		}
 	}
 	_free(cmd);
 	return (WEXITSTATUS(stat));
